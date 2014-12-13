@@ -1,13 +1,16 @@
-class SessionsController < ActionController::Base
-  def create
-    auth = request.env["omniauth.auth"]
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
-    redirect_to root_url, notice: "Signed in!"
+class SessionsController < Devise::OmniauthCallbacksController
+  before_action :set_oauth, only: [:facebook, :google_oauth2]
+  def facebook
+    set_oauth
+  end
+  def google_oauth2
+    set_oauth
   end
 
-  def destroy
-    session[:user_id] = nil
-    redirect_to root_url, notice: "Signed out!"
-  end
+  private
+    def set_oauth
+      @user = User.from_omniauth(request.env["omniauth.auth"])
+      sign_in @user
+      redirect_to gifts_path
+    end
 end

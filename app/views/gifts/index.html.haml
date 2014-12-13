@@ -1,23 +1,34 @@
 .container-fluid
+  
+  .row.center-block
+    .col-md-12
 
-  .btn-group.btn-group-justified
+    .btn-group.btn-group-justified
 
-    = link_to "Make a wish", "#", class: 'btn btn-info'
-    = link_to "Realize a wish", "#", class: 'btn btn-success'
+      = link_to "Make a wish", new_gift_path, class: 'btn btn-info'
+      = link_to "Realize a wish", "#", class: 'btn btn-success'
+
 
   =gravatar_for current_user
 
   %h1 All gifts
 
-  %table.table.table-hover.table.striped
-    %tr
-      %th Name
-      %th Link
+    %h1.text-center All gifts
 
-      -@gifts.each do |g|
-        %tr
-          %td= g.name
-          %td= link_to "See on Allegro", g.allegro_link
+    %table.table.table-hover.table.striped
+      %tr
+        %th Name
+        %th Link
+        %th 
+
+        -@gifts.each do |g|
+          %tr
+            %td= g.name
+            %td= link_to "See on Allegro", g.allegro_link
+            %td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
+
+
+
 
 
 

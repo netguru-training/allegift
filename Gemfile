@@ -18,12 +18,18 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'therubyracer'
+
 gem 'simplecov', :require => false, :group => :test
 gem 'ffaker'
+
+gem 'savon'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'dotenv-rails'
+
+  gem 'pry'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+
 end

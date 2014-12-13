@@ -25,8 +25,20 @@ class GiftsController < ApplicationController
     end
   end
 
+  def register_santa
+
+    chosen_gift = Gift.find(params[:gift_id])
+    @taken_gifts = []
+    @taken_gifts << chosen_gift
+    chosen_gift.destroy
+
+    redirect_to gifts_path
+  end
+
   private
     def gift_params
       params.require(:gift).permit(:name, :allegro_link, :user_id)
     end
+
+
 end
