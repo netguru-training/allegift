@@ -4,12 +4,14 @@ class SessionsController < Devise::OmniauthCallbacksController
     set_oauth
   end
   def google_oauth2
+    binding.pry
     set_oauth
   end
 
   private
     def set_oauth
       @user = User.from_omniauth(request.env["omniauth.auth"])
-      sign_in_and_redirect @user
+      sign_in @user
+      redirect_to gifts_path
     end
 end
