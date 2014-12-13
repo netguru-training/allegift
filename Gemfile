@@ -28,7 +28,6 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'haml-rails'
-gem 'sass-rails', github: 'rails/sass-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
