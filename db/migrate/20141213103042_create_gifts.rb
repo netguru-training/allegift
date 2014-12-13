@@ -1,6 +1,7 @@
-class CreateNames < ActiveRecord::Migration
+class CreateGifts < ActiveRecord::Migration
   def change
-    create_table :names do |t|
+    create_table :gifts do |t|
+      t.string :name
       t.string :allegro_link
       t.integer :user_id
 
