@@ -6,7 +6,7 @@
     .btn-group.btn-group-justified
 
       = link_to "Make a wish", new_gift_path, class: 'btn btn-info'
-      = link_to "Realize a wish", santa_list_gifts_path, class: 'btn btn-success'
+      = link_to "My gifts to others", santa_list_gifts_path, class: 'btn btn-success'
 
     //=gravatar_for current_user
 
@@ -14,6 +14,7 @@
     = link_to "Show all", gifts_path
 
     %h1.text-center All gifts
+    %h4.text-center Gifts that other people want
 
     = will_paginate @gifts
     %table.table.table-hover.table.striped

@@ -46,6 +46,10 @@ class GiftsController < ApplicationController
     @gifts = Gift.has_santa
   end
 
+  def wish_list
+    @gifts = Gift.same_user(current_user.id)
+  end
+
   private
     def gift_params
       params.require(:gift).permit(:name, :allegro_link, :user_id)

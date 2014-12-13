@@ -1,14 +1,15 @@
 .container-fluid
-  %h1.text-center Gifts to offer
-  %h4.text-center List of gifts that I will offer
+  %h1.text-center My wish list
+  %h4.text-center Gifts that I expect
 
   %table.table.table-hover.table.striped
     %tr
       %th Name
       %th Link
+      %th Status
 
       -@gifts.each do |g|
         %tr
           %td= g.name
           %td= link_to "See on Allegro", g.allegro_link
-
+          %td= !g.santa_id.nil? ? "taken" : "not taken"

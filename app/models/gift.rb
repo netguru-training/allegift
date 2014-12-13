@@ -14,6 +14,7 @@ class Gift < ActiveRecord::Base
   scope :has_not_santa, -> { where ("santa_id IS NULL") }
   scope :has_santa, -> { where ("santa_id IS NOT NULL") }
   scope :not_same_user, ->(id) { where("user_id != ?", id)}
+  scope :same_user, ->(id) { where("user_id = ?", id)}
 
   def fetch_id_from_link
     parts = allegro_link.split('i');
