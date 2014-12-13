@@ -14,3 +14,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'haml-rails'
 gem 'devise'
+
+group :development, :test do
+  gem 'rspec-rails'
+end
