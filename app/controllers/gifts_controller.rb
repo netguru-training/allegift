@@ -7,6 +7,7 @@ class GiftsController < ApplicationController
   end
 
   def index
+    @gifts = Gift.all
   end
 
   def create

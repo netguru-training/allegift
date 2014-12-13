@@ -1,2 +1,22 @@
-%h1 Gifts#index
-%p Find me in app/views/gifts/index.html.haml
+.container-fluid
+
+  .btn-group.btn-group-justified
+
+    = link_to "Make a wish", "#", class: 'btn btn-info'
+    = link_to "Realize a wish", "#", class: 'btn btn-success'
+
+  %h1 All gifts
+
+  %table.table.table-hover.table.striped
+    %tr
+      %th Name
+      %th Link
+
+      -@gifts.each do |g|
+        %tr
+          %td= g.name
+          %td= link_to "See on Allegro", g.allegro_link
+
+
+
+
