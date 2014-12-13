@@ -9,6 +9,7 @@ class GiftsController < ApplicationController
 
   def create
     @gift = Gift.new(gift_params)
+    @gift.fetch_id_from_link
 
     if @gift.save
       redirect_to gifts_path
