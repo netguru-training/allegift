@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141213110358) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "allegro_id"
   end
 
   create_table "users", force: true do |t|
