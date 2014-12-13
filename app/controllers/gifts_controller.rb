@@ -7,7 +7,7 @@ class GiftsController < ApplicationController
   end
 
   def index
-    @gifts = Gift.where("santa_id IS NULL")
+    @gifts = Gift.where("santa_id IS NULL").paginate(page: params[:page], per_page: 10)
   end
 
   def create
