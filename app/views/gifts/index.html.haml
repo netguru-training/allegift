@@ -8,6 +8,11 @@
       = link_to "Make a wish", new_gift_path, class: 'btn btn-info'
       = link_to "Realize a wish", santa_list_gifts_path, class: 'btn btn-success'
 
+
+  =gravatar_for current_user
+
+  %h1 All gifts
+
     %h1.text-center All gifts
 
     %table.table.table-hover.table.striped
@@ -23,6 +28,7 @@
             %td= g.name
             %td= link_to "See on Allegro", g.allegro_link
             %td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
+
 
 
 
