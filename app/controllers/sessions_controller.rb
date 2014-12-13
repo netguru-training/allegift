@@ -4,7 +4,6 @@ class SessionsController < Devise::OmniauthCallbacksController
     set_oauth
   end
   def google_oauth2
-    binding.pry
     set_oauth
   end
 
