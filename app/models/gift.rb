@@ -1,11 +1,4 @@
 class Gift < ActiveRecord::Base
-
-  include PgSearch
-  pg_search_scope :search, :against => [:name, :allegro_link],
-                  :using => {
-                      :tsearch => {:prefix => true}
-                   }
-
   belongs_to :user
   validates :name, presence: true
   validates :allegro_link, presence: true
