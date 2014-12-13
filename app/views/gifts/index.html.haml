@@ -9,12 +9,11 @@
       = link_to "Realize a wish", "#", class: 'btn btn-success'
 
 
-  =gravatar_for current_user
-
-  %h1 All gifts
+    //=gravatar_for current_user
 
     %h1.text-center All gifts
 
+    = will_paginate @gifts
     %table.table.table-hover.table.striped
       %tr
         %th Name
@@ -26,10 +25,4 @@
             %td= g.name
             %td= link_to "See on Allegro", g.allegro_link
             %td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
-
-
-
-
-
-
-
+    = will_paginate @gifts
