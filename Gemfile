@@ -22,6 +22,7 @@ gem 'therubyracer'
 gem 'simplecov', :require => false, :group => :test
 gem 'ffaker'
 gem 'will_paginate', '~> 3.0.6'
+gem 'pg_search'
 
 gem 'savon'
 

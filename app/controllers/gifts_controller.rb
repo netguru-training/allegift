@@ -7,8 +7,13 @@ class GiftsController < ApplicationController
   end
 
   def index
-    #@gifts = Gift.all
-    @gifts = Gift.all.paginate(page: params[:page], per_page: 10)
+    if params[:search_query]
+      search_query = "%#{params[:search_query]}%"
+      @gifts = Gift.where("name like ? or allegro_link like ?", search_query, search_query)
+                   .paginate( :page => params[:page], per_page: 10)
+    else
+      @gifts = Gift.all.paginate(page: params[:page], per_page: 10)
+    end
   end
 
   def create

@@ -11,6 +11,9 @@
 
     //=gravatar_for current_user
 
+    = render 'search_form'
+    = link_to "Show all", gifts_path
+
     %h1.text-center All gifts
 
     = will_paginate @gifts

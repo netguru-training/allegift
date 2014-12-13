@@ -18,10 +18,10 @@ User.create!(name: "John Lennon",
                password_confirmation: pass)
 end
 
-allegro_links = ['http://allegro.pl/show_item.php?item=4834149511&sh_dwh_token=d0b6dd74a8394345128e20d296cb1c5e',
-                 'http://allegro.pl/show_item.php?item=4831973018&sh_dwh_token=d0b6dd74a8394345128e20d296cb1c5e',
-                 'http://allegro.pl/show_item.php?item=4881862490&sh_dwh_token=d0b6dd74a8394345128e20d296cb1c5e',
-                 'http://allegro.pl/show_item.php?item=4881571713&sh_dwh_token=d0b6dd74a8394345128e20d296cb1c5e']
+allegro_links = ['http://allegro.pl/zb61-samochod-auto-autko-twister-zdalnie-sterowany-i4864531202.html',
+                 'http://allegro.pl/zestaw-noze-fiskars-6-elementow-5-nozy-blok-857197-i4846772420.html',
+                 'http://allegro.pl/40-x-bateria-duracell-industrial-lr6-r6-aa-2021-i4862411358.html',
+                 'http://allegro.pl/1503-keyboard-37-klawiszy-organy-mikrofon-radio-i4842746484.html']
 (1..40).each do |i|
   Gift.create!(name: Faker::Lorem.word,
                allegro_link: allegro_links[i%4],

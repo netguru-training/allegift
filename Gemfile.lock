@@ -125,6 +125,10 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    pg_search (0.7.8)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -245,6 +249,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   pg
+  pg_search
   pry
   rails (= 4.1.8)
   rspec-rails

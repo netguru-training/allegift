@@ -1,0 +1,5 @@
+-search_id_attr = :search_query
+= form_tag( gifts_path, :method => "get" ) do
+  = label_tag( search_id_attr, "Search for:" )
+  = text_field_tag( search_id_attr )
+  = submit_tag("Search", :name => nil )
