@@ -7,7 +7,7 @@ class GiftsController < ApplicationController
   end
 
   def index
-    @gifts = Gift.all
+    @gifts = Gift.where("santa_id IS NULL")
   end
 
   def create
@@ -28,11 +28,14 @@ class GiftsController < ApplicationController
   def register_santa
 
     chosen_gift = Gift.find(params[:gift_id])
-    @taken_gifts = []
-    @taken_gifts << chosen_gift
-    chosen_gift.destroy
+    chosen_gift.santa_id = current_user.id
+    chosen_gift.save
 
     redirect_to gifts_path
+  end
+
+  def santa_list
+    @gifts = Gift.where("santa_id IS NOT NULL")
   end
 
   private

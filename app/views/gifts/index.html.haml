@@ -6,18 +6,20 @@
     .btn-group.btn-group-justified
 
       = link_to "Make a wish", new_gift_path, class: 'btn btn-info'
-      = link_to "Realize a wish", "#", class: 'btn btn-success'
+      = link_to "Realize a wish", santa_list_gifts_path, class: 'btn btn-success'
 
     %h1.text-center All gifts
 
     %table.table.table-hover.table.striped
       %tr
-        %th Name
+        %th Who made a wish
+        %th Gift name
         %th Link
         %th 
 
         -@gifts.each do |g|
           %tr
+            %td= g.user.name
             %td= g.name
             %td= link_to "See on Allegro", g.allegro_link
             %td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
