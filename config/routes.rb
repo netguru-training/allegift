@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     patch :register_santa
     collection do
       get :santa_list
+      get :wish_list
     end
   end
 
