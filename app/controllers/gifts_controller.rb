@@ -7,7 +7,7 @@ class GiftsController < ApplicationController
   end
 
   def index
-    @gifts = Gift.has_not_santa.paginate(page: params[:page], per_page: 10)
+    @gifts = Gift.has_not_santa.not_same_user(current_user.id).paginate(page: params[:page], per_page: 10)
   end
 
   def create
