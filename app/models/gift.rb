@@ -1,4 +1,5 @@
 class Gift < ActiveRecord::Base
+  belongs_to :user
 
 
   def fetch_id_from_link
