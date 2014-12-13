@@ -19,6 +19,7 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'therubyracer'
 gem 'simplecov', :require => false, :group => :test
+gem 'ffaker'
 
 group :development, :test do
   gem 'rspec-rails'
