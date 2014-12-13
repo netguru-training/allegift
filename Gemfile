@@ -14,3 +14,5 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'haml-rails'
 gem 'devise'
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
