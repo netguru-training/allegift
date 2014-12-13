@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141213104932) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "allegro_id"
+    t.string   "allegro_id"
   end
 
   create_table "users", force: true do |t|
