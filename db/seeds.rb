@@ -12,8 +12,9 @@ User.create!(name: "John Lennon",
              password_confirmation: "johnlennon")
 
 (1..10).each do |i|
-  pass = Faker::Internet.password
-  User.create!(email: Faker::Internet.free_email,
+  pass = Faker::Internet.password(8)
+  User.create!(name: Faker::Internet.user_name,
+               email: Faker::Internet.free_email,
                password:              pass,
                password_confirmation: pass)
 end
@@ -25,5 +26,5 @@ allegro_links = ['http://allegro.pl/zb61-samochod-auto-autko-twister-zdalnie-ste
 (1..40).each do |i|
   Gift.create!(name: Faker::Lorem.word,
                allegro_link: allegro_links[i%4],
-               user_id: i%10)
+               user_id: i%10+1)
 end
