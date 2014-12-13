@@ -27,6 +27,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    akami (1.2.2)
+      gyoku (>= 0.4.0)
+      nokogiri
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
     bootstrap-sass (3.1.1.1)
@@ -62,6 +65,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
+    gyoku (1.1.1)
+      builder (>= 2.1.2)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -71,6 +76,8 @@ GEM
       railties (>= 4.0.1)
     hashie (3.3.2)
     hike (1.2.3)
+    httpi (2.2.7)
+      rack
     i18n (0.6.11)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
@@ -81,14 +88,20 @@ GEM
     json (1.8.1)
     jwt (1.2.0)
     libv8 (3.16.14.7)
+    macaddr (1.7.1)
+      systemu (~> 2.6.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_portile (0.6.1)
     minitest (5.5.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    nokogiri (1.6.5)
+      mini_portile (~> 0.6.0)
+    nori (2.4.0)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -160,6 +173,15 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    savon (2.7.2)
+      akami (~> 1.2.0)
+      builder (>= 2.1.2)
+      gyoku (~> 1.1.0)
+      httpi (~> 2.2.3)
+      nokogiri (>= 1.4.0)
+      nori (~> 2.4.0)
+      uuid (~> 2.3.7)
+      wasabi (~> 3.3.0)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -176,6 +198,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    systemu (2.6.4)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -189,8 +212,13 @@ GEM
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuid (2.3.7)
+      macaddr (~> 1.0)
     warden (1.2.3)
       rack (>= 1.0)
+    wasabi (3.3.1)
+      httpi (~> 2.0)
+      nokogiri (>= 1.4.0)
 
 PLATFORMS
   ruby
@@ -212,6 +240,7 @@ DEPENDENCIES
   rails (= 4.1.8)
   rspec-rails
   sass-rails (~> 4.0.3)
+  savon
   sdoc (~> 0.4.0)
   shoulda-matchers
   spring
