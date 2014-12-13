@@ -7,7 +7,7 @@ class GiftsController < ApplicationController
   end
 
   def index
-    @gifts = Gift.where("santa_id IS NULL").paginate(page: params[:page], per_page: 10)
+    @gifts = Gift.has_not_santa.paginate(page: params[:page], per_page: 10)
   end
 
   def create
@@ -35,7 +35,7 @@ class GiftsController < ApplicationController
   end
 
   def santa_list
-    @gifts = Gift.where("santa_id IS NOT NULL")
+    @gifts = Gift.has_santa
   end
 
   private
