@@ -1,5 +1,7 @@
 class GiftsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :index, :create]
+
   def new
     @gift = Gift.new
   end
@@ -10,7 +12,11 @@ class GiftsController < ApplicationController
 
   def create
     @gift = Gift.new(gift_params)
-    @gift.fetch_id_from_link
+
+    @gift.fetch_id_from_link unless @gift
+
+    @gift.user = current_user
+
 
     if @gift.save
       redirect_to gifts_path

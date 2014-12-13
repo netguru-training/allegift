@@ -21,5 +21,9 @@ gem 'therubyracer'
 group :development, :test do
   gem 'rspec-rails'
   gem 'dotenv-rails'
+
   gem 'pry'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+
 end
