@@ -10,10 +10,10 @@
 
     //=gravatar_for current_user
 
-    = render 'search_form'
-    = link_to "Show all", gifts_path
+    %h4.text-center= render 'search_form'
+    %p.text-center= link_to "Show all", gifts_path
 
-    %h1.text-center All gifts
+    %h1.text-center= @title
     %h4.text-center Gifts that other people want
 
     = will_paginate @gifts

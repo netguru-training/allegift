@@ -12,9 +12,11 @@ class GiftsController < ApplicationController
       @gifts = Gift.has_not_santa.not_same_user(current_user.id)
                    .where("name like ? or allegro_link like ?", search_query, search_query)
                    .paginate( :page => params[:page], per_page: 10)
+      @title = "Search with query: '#{params[:search_query]}'"
     else
       @gifts = Gift.has_not_santa.not_same_user(current_user.id)
                    .paginate(page: params[:page], per_page: 10)
+      @title = 'All gifts'
     end
   end
 
