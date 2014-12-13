@@ -1,0 +1,13 @@
+.container-fluid
+  %h1.text-center Gifts to offer
+
+  %table.table.table-hover.table.striped
+    %tr
+      %th Name
+      %th Link
+
+      -@gifts.each do |g|
+        %tr
+          %td= g.name
+          %td= link_to "See on Allegro", g.allegro_link
+

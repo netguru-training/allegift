@@ -9,10 +9,12 @@ class GiftsController < ApplicationController
   def index
     if params[:search_query]
       search_query = "%#{params[:search_query]}%"
-      @gifts = Gift.where("name like ? or allegro_link like ?", search_query, search_query)
+      @gifts = Gift.has_not_santa.not_same_user(current_user.id)
+                   .where("name like ? or allegro_link like ?", search_query, search_query)
                    .paginate( :page => params[:page], per_page: 10)
     else
-      @gifts = Gift.all.paginate(page: params[:page], per_page: 10)
+      @gifts = Gift.has_not_santa.not_same_user(current_user.id)
+                   .paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -34,11 +36,14 @@ class GiftsController < ApplicationController
   def register_santa
 
     chosen_gift = Gift.find(params[:gift_id])
-    @taken_gifts = []
-    @taken_gifts << chosen_gift
-    chosen_gift.destroy
+    chosen_gift.santa_id = current_user.id
+    chosen_gift.save
 
     redirect_to gifts_path
+  end
+
+  def santa_list
+    @gifts = Gift.has_santa
   end
 
   private
