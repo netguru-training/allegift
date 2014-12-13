@@ -24,6 +24,7 @@ gem 'will_paginate', '~> 3.0.6'
 
 gem 'rails_12factor', group: :production
 gem 'savon', '~> 2.6.0'
+gem 'rails_emoji'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -13,5 +13,10 @@
       -@gifts.each do |g|
         %tr
           %td= g.name
-          %td= link_to "See on Allegro", g.allegro_link
-          %td= !g.santa_id.nil? ? "taken" : "not taken"
+          %td
+            = link_to "See on Allegro", g.allegro_link
+          %td
+            -if !g.santa_id.nil?
+              != ':gift:'.emojify 
+            -else 
+              != ':evergreen_tree:'.emojify
