@@ -16,3 +16,6 @@ gem 'haml-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
+group :development, :test do
+  gem 'rspec-rails'
+end

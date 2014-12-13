@@ -11,7 +11,7 @@ class GiftsController < ApplicationController
     if gift.save
       redirect_to gifts_index_path
     else
-      render action: 'new'
+      render action: 'add'
     end
   end
 
