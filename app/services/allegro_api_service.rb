@@ -13,7 +13,11 @@ class AllegroApiService
     items = get_items(ids)
     sum = 0
     items.each do |item|
-      sum += item[:item_info][:it_buy_now_price].to_f
+      if item[:item_info][:it_buy_now_active].to_i==1
+        sum += item[:item_info][:it_buy_now_price].to_f
+      else
+        sum += item[:item_info][:it_price].to_f
+      end
     end
     return sum
   end
