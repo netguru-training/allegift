@@ -26,6 +26,7 @@ gem 'rails_12factor', group: :production
 gem 'rails_emoji'
 gem 'angularjs-rails'
 gem 'savon', '~> 2.8.0'
+gem 'opentok'
 
 group :development, :test do
   gem 'rspec-rails'
