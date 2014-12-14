@@ -1,27 +1,13 @@
-#{ provide(:title, 'Register') }
-
 .container.fluid
   .row.sign-in.center-block
     .col-md-8.col-md-offset-2.text-center
       %h2 Sign up
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .field
-          = f.label :email
-          %br/
-          = f.email_field :email, autofocus: true, required: true
-        .field
-          = f.label :password
-          - if @validatable
-            %em
-              (#{@minimum_password_length} characters minimum)
-          %br/
-          = f.password_field :password, autocomplete: "off", required: true
-        .field
-          = f.label :password_confirmation
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "off", required: true
-        %br
-        .actions
-          = f.submit "Sign up", class: 'btn btn-primary'
-
+      = bootstrap_form_for(resource, url: registration_path(resource_name), layout: :horizontal, label_col: "col-sm-4 ", control_col: "col-sm-6") do |f|
+        = f.form_group class: "error-color" do
+          = devise_error_messages!
+        = f.text_field :name, required: true
+        = f.email_field :email, required: true
+        = f.password_field :password, required: true
+        = f.password_field :password_confirmation, required: true
+        = f.form_group do
+          = f.submit "Sign up", class: "btn-primary"
