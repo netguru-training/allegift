@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :gifts do
     patch :register_santa
+    # get :register_to_random_gift
     collection do
       get :santa_list
       get :wish_list
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :rooms, only: [:index, :create, :show]
 
-  get  '/gifts/register_to_random_gift'        =>          'gifts#register_to_random_gift'
+  get  '/register_to_random_gift'        =>          'gifts#register_to_random_gift'
 
   root 'welcome#index'
 end

@@ -48,7 +48,7 @@ class GiftsController < ApplicationController
     chosen_gift = gifts.sample
     register_santa_to_gift(chosen_gift.id)
 
-    redirect_to gifts_path, notice: "Gift created successfully."
+    redirect_to gifts_path, notice: "Gift chosen successfully."
   end
 
   def santa_list
