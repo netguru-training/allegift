@@ -18,6 +18,12 @@ class AllegroApiService
     return sum
   end
 
+  def get_due_date(id)
+    items = get_items(id)
+    due_date_timestamp = items.first[:item_info][:it_ending_time].to_f
+    return Time.at(due_date_timestamp).to_datetime
+  end
+
   private
     def setup_connection
       validate_connection_data

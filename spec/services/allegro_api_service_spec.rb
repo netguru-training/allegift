@@ -7,6 +7,7 @@ RSpec.describe AllegroApiService, :type => :service do
     puts sum
     sum = api.sum_prices([4839334840])
     puts sum
+    api.get_due_date(4839334840)
   end
 
 end
