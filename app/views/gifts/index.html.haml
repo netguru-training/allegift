@@ -5,16 +5,13 @@
 
   %div{"ng-controller" => "searchController"}
 
-
-
     %h1.text-center Gifts that other people want
 
     %form.text-center
-      %input.search-input{"type"=>"text", "placeholder"=>"Search for gifts", "name"=>"query", "ng-model"=>"query", "ng-change"=>"searchClick()"}
-
+      %input.search-input{"type"=>"text", "placeholder"=>"Search for gifts",
+                          "name"=>"query", "ng-model"=>"query", "ng-change"=>"searchClick()"}
       %p
         %a{"href"=>"", "ng-click"=>"getAll()"} Show all gifts
-
 
     = render "pagination"
 
@@ -25,7 +22,6 @@
         %th{"ng-click"=>"sortGifts('importance_id')"} Importance
         %th Link
         %th
-
 
       %tr{"ng-repeat"=>"gift in gifts"}
         %td{"ng-bind"=>"gift.user.name"}

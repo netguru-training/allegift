@@ -17,14 +17,11 @@ class GiftsController < ApplicationController
       @gifts = Gift.has_not_santa.not_same_user(current_user.id)
                    .where("name like ? or allegro_link like ?", search_query, search_query)
                    .includes(:importance, :user)
-                   #.paginate( :page => params[:page], per_page: 10)
     else
       @gifts = Gift.has_not_santa.not_same_user(current_user.id)
                    .includes(:importance, :user)
-                   #.paginate(page: params[:page], per_page: 10)
     end
     render :json => @gifts.to_json(include: { user:{ only: :name }, importance:{ only: :name } } )
-    #render json: @gifts
   end
 
   def create

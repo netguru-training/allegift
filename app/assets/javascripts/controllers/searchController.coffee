@@ -52,9 +52,6 @@ angular.module('allegift').controller "searchController", [
 
 
     $scope.updatePages = ->
-
-      #$scope.AllGifts.sort (a, b) ->
-      #  (if (a.name > b.name) then 1 else ((if (b.name > a.name) then -1 else 0)))
       $scope.willPaginateCollection.totalEntries = $scope.AllGifts.length
       $scope.willPaginateCollection.totalPages = Math.ceil($scope.AllGifts.length/$scope.willPaginateCollection.perPage)
       $scope.start = ($scope.page-1)*$scope.willPaginateCollection.perPage
@@ -74,10 +71,6 @@ angular.module('allegift').controller "searchController", [
       if ($scope.page == $scope.willPaginateCollection.totalPages)
         $scope.nextClass = "disabled"
 
-
-
-
-
     $scope.searchClick = ->
       $http.get('/gifts/live_search?search_query='+$scope.query)
       .success (data) ->
@@ -88,7 +81,6 @@ angular.module('allegift').controller "searchController", [
       .error (data) ->
         console.log('Error: ' + data)
         return
-
 
     $scope.registerSanta = (id) ->
       $http.patch('/gifts/'+id+'/register_santa')
