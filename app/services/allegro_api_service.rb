@@ -28,6 +28,11 @@ class AllegroApiService
     return Time.at(due_date_timestamp).to_datetime
   end
 
+  def get_quantity(id)
+    items = get_items(id)
+    items.first[:item_info][:it_quantity].to_i
+  end
+
   def get_name(id)
     get_items(id).first[:item_info][:it_name]
   end

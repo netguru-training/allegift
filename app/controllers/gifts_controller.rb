@@ -58,13 +58,16 @@ class GiftsController < ApplicationController
 
     def prepare_gift
       @gift = Gift.new(gift_params)
-
       @gift.fetch_id_from_link if @gift
+      set_data_from_allegro
+    end
 
+    def set_data_from_allegro
       api = AllegroApiService.new
       @gift.due_date = api.get_due_date(@gift.allegro_id)
       @gift.price = api.sum_prices([@gift.allegro_id])
       @gift.name = api.get_name(@gift.allegro_id)
+      @gift.quantity = api.get_quantity(@gift.allegro_id)
     end
 
 end
