@@ -17,7 +17,6 @@ angular.module('allegift').controller "searchController", [
         $scope.AllGifts = data
         $scope.updatePages()
         $scope.pageClass[0] = 'active'
-        console.log data
         return
       .error (data) ->
         console.log('Error: ' + data)
@@ -35,7 +34,6 @@ angular.module('allegift').controller "searchController", [
       new Array($scope.willPaginateCollection.totalPages)
 
     $scope.changePage = (number) ->
-      console.log number
       $scope.page = number
       $scope.updatePages()
       $scope.pageClass[number-1] = 'active'
@@ -46,7 +44,6 @@ angular.module('allegift').controller "searchController", [
       $scope.willPaginateCollection.totalPages = Math.ceil($scope.AllGifts.length/$scope.willPaginateCollection.perPage)
       $scope.start = ($scope.page-1)*$scope.willPaginateCollection.perPage
       $scope.end = ($scope.page)*$scope.willPaginateCollection.perPage
-      console.log $scope.start, $scope.end
       $scope.gifts = $scope.AllGifts.slice($scope.start,$scope.end );
       $scope.pageClass = new Array($scope.willPaginateCollection.totalPages)
       if ($scope.page < $scope.willPaginateCollection.totalPages)
@@ -67,13 +64,11 @@ angular.module('allegift').controller "searchController", [
 
 
     $scope.searchClick = ->
-      console.log $scope.query
       $http.get('/gifts/live_search?search_query='+$scope.query)
       .success (data) ->
         $scope.AllGifts = data
         $scope.updatePages()
         $scope.changePage(1)
-        console.log data
         return
       .error (data) ->
         console.log('Error: ' + data)
@@ -83,7 +78,6 @@ angular.module('allegift').controller "searchController", [
     $scope.registerSanta = (id) ->
       $http.patch('/gifts/'+id+'/register_santa')
       .success (data) ->
-        console.log data
         $scope.gifts = $scope.gifts.filter((el) ->
             el.id isnt data.id
         )

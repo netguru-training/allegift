@@ -7,22 +7,16 @@
 
   %div{"ng-controller" => "searchController"}
 
-    %h4.text-center Gifts that other people want
+    %h1.text-center Gifts that other people want
 
     %form.text-center
-      %input{"type"=>"text", "placeholder"=>"Search for gifts", "name"=>"query", "ng-model"=>"query", "ng-change"=>"searchClick()"}
+      %input.search-input{"type"=>"text", "placeholder"=>"Search for gifts", "name"=>"query", "ng-model"=>"query", "ng-change"=>"searchClick()"}
 
       %p
-        %a{"href"=>"", "ng-click"=>"getAll()"} Show all
+        %a{"href"=>"", "ng-click"=>"getAll()"} Show all gifts
 
 
-    %ul.pagination
-      %li.prev{"ng-class"=>"prevClass"}
-        %a{"rel"=>"prev", "href"=>"", "ng-click"=>"prevPage()"} ← Previous
-      %li{"ng-repeat"=>"a in range() track by $index", "ng-class"=>"pageClass[$index]"}
-        %a{"href"=>"", "ng-click"=>"changePage($index + 1)"}  {{ $index + 1}}
-      %li.next{"ng-class"=>"nextClass"}
-        %a{"rel"=>"next", "href"=>"", "ng-click"=>"nextPage()"} Next →
+    = render "pagination"
 
     %table.table.table-hover.table.striped.panel
       %tr
@@ -41,7 +35,7 @@
         %td
           %a.btn.btn-info{"ng-click"=>"registerSanta(gift.id)"} Choose
 
-
+    = render "pagination"
 
 
 
