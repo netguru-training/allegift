@@ -2,6 +2,7 @@ module GiftsHelper
 
   NO_DUE_DATE = '---'
   ENDED = 'ended'
+  CURRENCY = 'zł'
 
   def time_until_end(gift)
     unless gift.due_date.nil?
@@ -14,5 +15,8 @@ module GiftsHelper
     return NO_DUE_DATE
   end
 
+  def getFormatedPrice(gift)
+    number_to_currency(gift.price, unit: CURRENCY, format: "%n %u")
+  end
 
 end

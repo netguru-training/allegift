@@ -9,6 +9,7 @@
     %tr
       %th Name
       %th Importance
+      %th Price
       %th Time to end
       %th Link
       %th Status
@@ -17,6 +18,7 @@
         %tr
           %td= g.name
           %td= g.importance.name unless g.importance.nil?
+          %td= getFormatedPrice(g)
           %td= time_until_end(g)
           %td
             = link_to "See on Allegro", g.allegro_link
