@@ -14,7 +14,6 @@ class AllegroApiService
     sum = 0
     if items.kind_of?(Array)
       items.each do |item|
-        puts item[:item_info][:it_buy_now_price]
         sum += item[:item_info][:it_buy_now_price].to_f
       end
     else
@@ -68,10 +67,9 @@ class AllegroApiService
         }
       )
       list_info = call_result.body[:do_get_items_info_response][:array_item_list_info]
-      items = []
-      if list_info != nil
-        items = list_info[:item]
-      end
+
+      items = list_info[:item] ? list_info[:item] : []
+
       return items;
     end
 
