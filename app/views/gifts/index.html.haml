@@ -3,9 +3,14 @@
 
 .container-fluid
 
+<<<<<<< HEAD
   //=gravatar_for current_user
 
   %div{"ng-controller" => "searchController"}
+=======
+  %h4.text-center= render 'search_form'
+  %p.text-center= link_to "Show all", gifts_path
+>>>>>>> added avatar
 
     %h1.text-center Gifts that other people want
 
@@ -18,7 +23,12 @@
 
     = render "pagination"
 
+<<<<<<< HEAD
     %table.table.table-hover.table.striped.panel
+=======
+    = will_paginate @gifts, renderer: BootstrapPagination::Rails
+    %table.table.table-hover.table-striped.panel.table-winter
+>>>>>>> added avatar
       %tr
         %th Who made a wish
         %th Gift name

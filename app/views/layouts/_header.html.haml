@@ -11,11 +11,13 @@
             = link_to root_path do
               %span.glyphicon.glyphicon-gift
               AlleGift
-    %p.navbar-text.navbar-right
-      - if user_signed_in?
-        = link_to "My wish list", wish_list_gifts_path, class: 'btn btn-primary wish-button'
-        = link_to 'Logout', destroy_user_session_path, method: :delete
-      - else
-        = link_to "Sign up", new_user_registration_path
-        |
-        = link_to "Log in", new_user_session_path
+    .btn-group.pull-right
+      %p.navbar-text.navbar-right
+        - if user_signed_in?
+          = link_to "My wish list", wish_list_gifts_path, class: 'btn btn-primary wish-button'
+          = current_user.avatar_url.nil? ? gravatar_for(current_user) : avatar_for(current_user)
+          = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-link'
+        - else
+          = link_to "Sign up", new_user_registration_path
+          |
+          = link_to "Log in", new_user_session_path

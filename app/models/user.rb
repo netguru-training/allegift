@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      user.avatar_url = auth.info.image
     end
   end
 end
