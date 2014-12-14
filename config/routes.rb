@@ -7,12 +7,11 @@ Rails.application.routes.draw do
       get :santa_list
       get :wish_list
       get :live_search
+      get :register_to_random_gift
     end
   end
 
   resources :rooms, only: [:index, :create, :show]
-
-  get  '/register_to_random_gift'        =>          'gifts#register_to_random_gift'
 
   root 'welcome#index'
 end
