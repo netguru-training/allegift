@@ -79,7 +79,7 @@ class AllegroApiService
 
       items = list_info[:item] ? list_info[:item] : []
 
-      if !items.kind_of?(Array)
+      if items.kind_of?(Hash)
         items = [items]
       end
 
