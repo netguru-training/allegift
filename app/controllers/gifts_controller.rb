@@ -41,7 +41,7 @@ class GiftsController < ApplicationController
     @gift.user = current_user
 
     if @gift.save
-      redirect_to gifts_path
+      redirect_to gifts_path, notice: "Gift created successfully."
     else
       render action: 'new'
     end
