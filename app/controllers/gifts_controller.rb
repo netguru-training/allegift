@@ -45,6 +45,10 @@ class GiftsController < ApplicationController
 
   def register_to_random_gift
     gifts = Gift.has_not_santa.not_same_user(current_user.id)
+    if gifts.empty?
+      redirect_to gifts_path, alert: "Nothing to choose."
+      return
+    end
     chosen_gift = gifts.sample
     register_santa_to_gift(chosen_gift.id)
 
