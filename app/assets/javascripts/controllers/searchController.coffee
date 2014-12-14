@@ -8,12 +8,25 @@ angular.module('allegift').controller "searchController", [
     $scope.prevClass = "disabled";
     $scope.nextClass = "";
     $scope.pageClass = [];
+    $scope.sortBy = ""
 
+    dynamicSort = (property) ->
+      sortOrder = 1
+      if property[0] is "-"
+        sortOrder = -1
+        property = property.substr(1)
+      (a, b) ->
+        result = (if (a[property] < b[property]) then -1 else (if (a[property] > b[property]) then 1 else 0))
+        result * sortOrder
 
+    $scope.sortGifts = (sortBy) ->
+      $scope.AllGifts.sort(dynamicSort(sortBy))
+      $scope.changePage(1)
 
     $scope.getAll = ->
       $http.get('/gifts/live_search')
       .success (data) ->
+        console.log data
         $scope.AllGifts = data
         $scope.updatePages()
         $scope.pageClass[0] = 'active'
@@ -40,6 +53,9 @@ angular.module('allegift').controller "searchController", [
 
 
     $scope.updatePages = ->
+
+      #$scope.AllGifts.sort (a, b) ->
+      #  (if (a.name > b.name) then 1 else ((if (b.name > a.name) then -1 else 0)))
       $scope.willPaginateCollection.totalEntries = $scope.AllGifts.length
       $scope.willPaginateCollection.totalPages = Math.ceil($scope.AllGifts.length/$scope.willPaginateCollection.perPage)
       $scope.start = ($scope.page-1)*$scope.willPaginateCollection.perPage

@@ -21,8 +21,8 @@
     %table.table.table-hover.table.striped.panel
       %tr
         %th Who made a wish
-        %th Gift name
-        %th Importance
+        %th{"ng-click"=>"sortGifts('name')"} Gift name
+        %th{"ng-click"=>"sortGifts('importance_id')"} Importance
         %th Link
         %th
 
