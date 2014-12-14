@@ -26,7 +26,6 @@ angular.module('allegift').controller "searchController", [
     $scope.getAll = ->
       $http.get('/gifts/live_search')
       .success (data) ->
-        console.log data
         $scope.AllGifts = data
         $scope.updatePages()
         $scope.pageClass[0] = 'active'
