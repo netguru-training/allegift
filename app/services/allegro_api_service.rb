@@ -24,6 +24,10 @@ class AllegroApiService
     return Time.at(due_date_timestamp).to_datetime
   end
 
+  def get_name(id)
+    get_items(id).first[:item_info][:it_name]
+  end
+
   private
     def setup_connection
       validate_connection_data

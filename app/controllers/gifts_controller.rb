@@ -77,6 +77,7 @@ class GiftsController < ApplicationController
       api = AllegroApiService.new
       @gift.due_date = api.get_due_date(@gift.allegro_id)
       @gift.price = api.sum_prices([@gift.allegro_id])
+      @gift.name = api.get_name(@gift.allegro_id)
     end
 
 end
