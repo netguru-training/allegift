@@ -1,10 +1,10 @@
 !!!
 %html
-  %head
+  %head{ lang: 'en', "ng-app"=>'allegift'}
     %title #{ full_title(yield(:title)) + "AlleGift" }
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
     %nav.navbar.navbar-default
       .container-fluid

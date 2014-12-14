@@ -1,0 +1,2 @@
+allegift = angular.module('allegift',[])
+

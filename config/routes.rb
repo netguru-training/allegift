@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get :santa_list
       get :wish_list
+      get :live_search
     end
   end
 

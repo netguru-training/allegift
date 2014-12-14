@@ -20,6 +20,19 @@ class GiftsController < ApplicationController
     end
   end
 
+  def live_search
+    if params[:search_query]
+      search_query = "%#{params[:search_query]}%"
+      @gifts = Gift.has_not_santa.not_same_user(current_user.id)
+                   .where("name like ? or allegro_link like ?", search_query, search_query)
+                   .paginate( :page => params[:page], per_page: 10)
+
+    else
+      @gifts = Gift.has_not_santa.not_same_user(current_user.id)
+    end
+    render json: @gifts
+  end
+
   def create
     @gift = Gift.new(gift_params)
 
