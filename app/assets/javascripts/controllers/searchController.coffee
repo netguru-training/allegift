@@ -6,12 +6,17 @@ angular.module('allegift').controller "searchController", [
     $scope.AllGifts
     $scope.page = 1
     $scope.prevClass = "disabled";
+    $scope.nextClass = "";
+    $scope.pageClass = [];
+
+
 
     $scope.getAll = ->
       $http.get('/gifts/live_search')
       .success (data) ->
         $scope.AllGifts = data
         $scope.updatePages()
+        $scope.pageClass[0] = 'active'
         console.log data
         return
       .error (data) ->
@@ -33,6 +38,8 @@ angular.module('allegift').controller "searchController", [
       console.log number
       $scope.page = number
       $scope.updatePages()
+      $scope.pageClass[number-1] = 'active'
+
 
     $scope.updatePages = ->
       $scope.willPaginateCollection.totalEntries = $scope.AllGifts.length
@@ -41,6 +48,21 @@ angular.module('allegift').controller "searchController", [
       $scope.end = ($scope.page)*$scope.willPaginateCollection.perPage
       console.log $scope.start, $scope.end
       $scope.gifts = $scope.AllGifts.slice($scope.start,$scope.end );
+      $scope.pageClass = new Array($scope.willPaginateCollection.totalPages)
+      if ($scope.page < $scope.willPaginateCollection.totalPages)
+        $scope.prevClass = ""
+      else
+        $scope.nextClass = "disabled"
+      if ($scope.page > 1)
+        $scope.nextClass = ""
+      else
+        $scope.prevClass = "disabled"
+      if ($scope.page == 1)
+        $scope.prevClass = "disabled"
+      if ($scope.page == $scope.willPaginateCollection.totalPages)
+        $scope.nextClass = "disabled"
+
+
 
 
 

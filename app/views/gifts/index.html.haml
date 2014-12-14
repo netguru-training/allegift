@@ -15,12 +15,11 @@
       %p
         %a{"href"=>"", "ng-click"=>"getAll()"} Show all
 
-    //= will_paginate @gifts, renderer: BootstrapPagination::Rails
 
     %ul.pagination
       %li.prev{"ng-class"=>"prevClass"}
         %a{"rel"=>"prev", "href"=>"", "ng-click"=>"prevPage()"} ← Previous
-      %li{"ng-repeat"=>"a in range() track by $index"}
+      %li{"ng-repeat"=>"a in range() track by $index", "ng-class"=>"pageClass[$index]"}
         %a{"href"=>"", "ng-click"=>"changePage($index + 1)"}  {{ $index + 1}}
       %li.next{"ng-class"=>"nextClass"}
         %a{"rel"=>"next", "href"=>"", "ng-click"=>"nextPage()"} Next →
@@ -33,20 +32,15 @@
         %th Link
         %th
 
-      //-@gifts.each do |g|
+
       %tr{"ng-repeat"=>"gift in gifts"}
-        //%td= g.user.name
-        //%td= g.name
-        //%td= link_to "See on Allegro", g.allegro_link
         %td{"ng-bind"=>"gift.user.name"}
         %td{"ng-bind"=>"gift.name"}
         %td{"ng-bind"=>"gift.importance.name"}
           %a{"ng-href"=>"{{gift.allegro_link}}"}
         %td
           %a.btn.btn-info{"ng-click"=>"registerSanta(gift.id)"} Choose
-        //%td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
 
-    //= will_paginate @gifts, renderer: BootstrapPagination::Rails
 
 
 
