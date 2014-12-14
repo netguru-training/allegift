@@ -10,6 +10,7 @@ User.create!(name: "John Lennon",
              email: "example@railstutorial.org",
              password:              "johnlennon",
              password_confirmation: "johnlennon")
+Importance.create!([{name: 'Very important gift'}, {name: 'Important gift'}, {name: 'Would be nice to have'}])
 
 (1..10).each do |i|
   pass = Faker::Internet.password(8)
@@ -26,5 +27,6 @@ allegro_links = ['http://allegro.pl/zb61-samochod-auto-autko-twister-zdalnie-ste
 (1..40).each do |i|
   Gift.create!(name: Faker::Lorem.word,
                allegro_link: allegro_links[i%4],
-               user_id: i%10+1)
+               user_id: i%10+1,
+               importance_id: i%3+1)
 end

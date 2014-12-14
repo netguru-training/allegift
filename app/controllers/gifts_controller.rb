@@ -38,7 +38,6 @@ class GiftsController < ApplicationController
 
     @gift.user = current_user
 
-
     if @gift.save
       redirect_to gifts_path
     else
@@ -65,7 +64,7 @@ class GiftsController < ApplicationController
 
   private
     def gift_params
-      params.require(:gift).permit(:name, :allegro_link, :user_id)
+      params.require(:gift).permit(:name, :allegro_link, :user_id, :importance_id)
     end
 
     def set_price(gift)
@@ -79,6 +78,5 @@ class GiftsController < ApplicationController
       @gift.fetch_id_from_link if @gift
       set_price(@gift)
     end
-
 
 end

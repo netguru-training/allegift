@@ -9,9 +9,11 @@
     %tr
       %th Name
       %th Link
+      %th Importance
 
       -@gifts.each do |g|
         %tr
           %td= g.name
           %td= link_to "See on Allegro", g.allegro_link
+          %td= g.importance.name
 

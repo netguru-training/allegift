@@ -22,9 +22,31 @@ ActiveRecord::Schema.define(version: 20141214110532) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "allegro_id"
+    t.integer  "allegro_id"
     t.integer  "santa_id"
+    t.integer  "importance_id"
     t.decimal  "price"
+  end
+
+  create_table "importances", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "names", force: true do |t|
+    t.string   "allegro_link"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: true do |t|

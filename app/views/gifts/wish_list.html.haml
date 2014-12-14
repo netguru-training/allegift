@@ -8,12 +8,14 @@
   %table.table.table-hover.table.striped
     %tr
       %th Name
+      %th Importance
       %th Link
       %th Status
 
       -@gifts.each do |g|
         %tr
           %td= g.name
+          %td= g.importance.name unless g.importance.nil?
           %td
             = link_to "See on Allegro", g.allegro_link
           %td

@@ -14,6 +14,10 @@
           = f.label :allegro_link
           %br/
           = f.text_field :allegro_link, class: 'form-control'
+        .field
+          = f.label :importance
+          %br/
+          = f.collection_select(:importance_id, Importance.all, :id, :name)
         %br
         .actions
           = f.submit 'Save', class: 'btn btn-info'

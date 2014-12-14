@@ -27,6 +27,7 @@
       %tr
         %th Who made a wish
         %th Gift name
+        %th Importance
         %th Link
         %th
 
@@ -34,9 +35,11 @@
         %tr
           %td= g.user.name
           %td= g.name
+          %td= g.importance.name
           %td= link_to "See on Allegro", g.allegro_link
           %td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
 
     = will_paginate @gifts, renderer: BootstrapPagination::Rails
+
 
 

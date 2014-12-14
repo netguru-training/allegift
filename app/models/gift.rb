@@ -1,8 +1,10 @@
 class Gift < ActiveRecord::Base
   belongs_to :user
+  belongs_to :importance
   validates :name, presence: true
   validates :allegro_link, presence: true
   validates :user_id, presence: true
+  validates :importance, presence: true
 
   scope :has_not_santa, -> { where ("santa_id IS NULL") }
   scope :has_santa, -> { where ("santa_id IS NOT NULL") }
