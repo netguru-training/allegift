@@ -9,11 +9,16 @@
     %nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          .navbar-brand 
+          .navbar-brand
             %p.navbar-right
-            = link_to gifts_path do
-              %span.glyphicon.glyphicon-gift
-              AlleGift          
+              -if user_signed_in?
+                = link_to gifts_path do
+                  %span.glyphicon.glyphicon-gift
+                  AlleGift
+              - else
+                = link_to root_path do
+                  %span.glyphicon.glyphicon-gift
+                  AlleGift
         %p.navbar-text.navbar-right
           - if user_signed_in?
             = link_to "My wish list", wish_list_gifts_path, class: 'btn btn-primary'
@@ -22,5 +27,5 @@
             = link_to "Sign up", new_user_registration_path
             |
             = link_to "Log in", new_user_session_path
-   
+
   = yield
