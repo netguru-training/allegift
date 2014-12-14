@@ -1,0 +1,18 @@
+= render 'form'
+%h1 Listing rooms
+
+%table
+  %tr
+    %th Name
+    %th Sessionid
+    %th Public
+    %th
+    %th
+    %th
+
+  - @rooms.each do |room|
+    %tr
+      %td= room.name
+      %td= room.session_id
+      %td= room.public
+      %td= link_to 'Show', room

@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :rooms, only: [:index, :create, :show]
   root 'welcome#index'
 end
