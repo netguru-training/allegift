@@ -2,9 +2,11 @@
 %html
   %head{ lang: 'en'}
     %title #{ full_title(yield(:title)) + "AlleGift" }
+    = include_gon(init: true)
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
+    = javascript_include_tag "http://static.opentok.com/webrtc/v2.2/js/opentok.min.js"
     = favicon_link_tag "snowflake.ico"
   %body{"ng-app"=>'allegift'}
   = render "layouts/header"

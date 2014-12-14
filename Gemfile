@@ -27,7 +27,7 @@ gem 'rails_emoji'
 gem 'angularjs-rails'
 gem 'savon', '~> 2.8.0'
 gem 'opentok'
-
+gem 'gon'
 group :development, :test do
   gem 'rspec-rails'
   gem 'dotenv-rails'

@@ -70,6 +70,11 @@ GEM
     ffaker (1.25.0)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     gyoku (1.2.2)
       builder (>= 2.1.2)
     haml (4.1.0.beta.1)
@@ -175,6 +180,7 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     ref (1.0.5)
+    request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec-core (3.1.7)
@@ -269,6 +275,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   font-awesome-rails
+  gon
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails

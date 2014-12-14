@@ -6,7 +6,8 @@ class RoomsController < ApplicationController
   end
   def create
     @room = Room.new(room_params)
-    @token = OpenTokService.new(@room).generate_token
+    session = OpenTokService.new(@room).create_session
+
     if @room.save
       redirect_to room_path(@room)
     else
@@ -16,6 +17,10 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    token = OpenTokService.new(@room).generate_token
+    gon.token =  token
+    gon.api_key = ENV["OPENTOK_API_KEY"]
+    gon.session_id = @room.session_id
   end
 
   private
