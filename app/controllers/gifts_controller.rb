@@ -1,6 +1,7 @@
 class GiftsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :index, :create]
+  before_action :prepare_gift, only: [:create]
 
   def new
     @gift = Gift.new
@@ -34,9 +35,6 @@ class GiftsController < ApplicationController
   end
 
   def create
-    @gift = Gift.new(gift_params)
-
-    @gift.fetch_id_from_link if @gift
 
     @gift.user = current_user
 
@@ -68,6 +66,18 @@ class GiftsController < ApplicationController
   private
     def gift_params
       params.require(:gift).permit(:name, :allegro_link, :user_id)
+    end
+
+    def set_price(gift)
+      api = AllegroApiService.new
+      gift.price = api.sum_prices([gift.allegro_id])
+    end
+
+    def prepare_gift
+      @gift = Gift.new(gift_params)
+
+      @gift.fetch_id_from_link if @gift
+      set_price(@gift)
     end
 
 
