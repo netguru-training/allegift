@@ -36,7 +36,7 @@ class GiftsController < ApplicationController
   def create
     @gift = Gift.new(gift_params)
 
-    @gift.fetch_id_from_link unless @gift
+    @gift.fetch_id_from_link if @gift
 
     @gift.user = current_user
 
