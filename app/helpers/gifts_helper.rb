@@ -15,8 +15,17 @@ module GiftsHelper
     return NO_DUE_DATE
   end
 
-  def getFormatedPrice(gift)
-    number_to_currency(gift.price, unit: CURRENCY, format: "%n %u")
+  def get_formated_price(gift)
+    format_to_currency(gift.price)
+  end
+
+  def gift_prices_summary(gifts)
+    total = gifts.sum("price")
+    format_to_currency(total)
+  end
+
+  def format_to_currency(data)
+    number_to_currency(data, unit: CURRENCY, format: "%n %u")
   end
 
 end

@@ -4,6 +4,7 @@
 
   %h1.text-center My wish list
   %h4.text-center Gifts that I expect
+  %h5.text-center Total cost: #{gift_prices_summary(@gifts)}
 
   %table.table.table-hover.table.striped
     %tr
@@ -18,7 +19,7 @@
         %tr
           %td= g.name
           %td= g.importance.name unless g.importance.nil?
-          %td= getFormatedPrice(g)
+          %td= get_formated_price(g)
           %td= time_until_end(g)
           %td
             = link_to "See on Allegro", g.allegro_link
