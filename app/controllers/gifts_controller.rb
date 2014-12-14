@@ -43,6 +43,14 @@ class GiftsController < ApplicationController
     render :json => chosen_gift.to_json
   end
 
+  def register_to_random_gift
+    gifts = Gift.has_not_santa.not_same_user(current_user.id)
+    chosen_gift = gifts.sample
+    register_santa_to_gift(chosen_gift.id)
+
+    redirect_to gifts_path, notice: "Gift created successfully."
+  end
+
   def santa_list
     @gifts = Gift.has_santa
   end
@@ -54,6 +62,12 @@ class GiftsController < ApplicationController
   private
     def gift_params
       params.require(:gift).permit(:name, :allegro_link, :user_id, :importance_id)
+    end
+
+    def register_santa_to_gift(gift_id)
+      chosen_gift = Gift.find(gift_id)
+      chosen_gift.santa_id = current_user.id
+      chosen_gift.save
     end
 
     def prepare_gift

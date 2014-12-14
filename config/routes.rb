@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :rooms, only: [:index, :create, :show]
+
+  get  '/gifts/register_to_random_gift'        =>          'gifts#register_to_random_gift'
+
   root 'welcome#index'
 end
