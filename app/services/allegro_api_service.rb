@@ -80,6 +80,9 @@ class AllegroApiService
     end
 
     def get_items(ids)
+      unless @items.nil?
+        return @items
+      end
       call_result=@allegro_client.call(
         :do_get_items_info,
         message: {
@@ -91,13 +94,13 @@ class AllegroApiService
       )
       list_info = call_result.body[:do_get_items_info_response][:array_item_list_info]
 
-      items = list_info[:item] ? list_info[:item] : []
+      @items = list_info[:item] ? list_info[:item] : []
 
-      if items.kind_of?(Hash)
-        items = [items]
+      if @items.kind_of?(Hash)
+        @items = [@items]
       end
 
-      return items;
+      return @items;
     end
 
 end
