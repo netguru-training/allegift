@@ -9,9 +9,9 @@ class RoomsController < ApplicationController
     session = OpenTokService.new(@room).create_session
 
     if @room.save
-      redirect_to room_path(@room)
+      redirect_to room_path(@room), notice: "Now you can talk about your gift!"
     else
-      render :index
+      render :index, error: "Can't create that room"
     end
   end
 
