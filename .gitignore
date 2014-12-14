@@ -32,3 +32,4 @@ database.yml
 .env
 
 .idea/*
+.gitignore~
