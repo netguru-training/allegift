@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :create]
   def index
     @room = Room.new
-    @rooms = Room.where(public:  true).order("created_at DESC")
+    @rooms = Room.order("created_at DESC")
   end
   def create
     @room = Room.new(room_params)
@@ -25,7 +25,7 @@ class RoomsController < ApplicationController
 
   private
     def room_params
-      params.require(:room).permit(:name, :session_id, :public)
+      params.require(:room).permit(:name, :session_id)
     end
 end
 

@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20141214140809) do
   create_table "rooms", force: true do |t|
     t.string   "name"
     t.string   "session_id"
-    t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

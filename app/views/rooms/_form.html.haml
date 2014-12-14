@@ -1,3 +1,4 @@
+.rooms-form
 = form_for @room do |f|
   - if @room.errors.any?
     #error_explanation
@@ -8,9 +9,8 @@
 
   .field
     = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :public
-    = f.check_box :public
+    = f.text_field :name, required: true
+  %br
   .actions
-    = f.submit 'Save'
+    = f.submit 'Create room', class: "btn btn-primary btn-block"
+  %br

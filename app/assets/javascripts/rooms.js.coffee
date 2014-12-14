@@ -21,4 +21,3 @@ $ ->
   session.addEventListener "sessionConnected", sessionConnectedHandler
   session.addEventListener "streamCreated", streamCreatedHandler
   session.connect apiKey, token
-
