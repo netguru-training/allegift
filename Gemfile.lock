@@ -35,6 +35,7 @@ GEM
     bcrypt (3.1.9)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bootstrap_form (2.2.0)
     builder (3.2.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -233,6 +234,8 @@ GEM
       httpi (~> 2.0)
       nokogiri (>= 1.4.0)
     will_paginate (3.0.7)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -240,6 +243,7 @@ PLATFORMS
 DEPENDENCIES
   angularjs-rails
   bootstrap-sass (~> 3.1.0)
+  bootstrap_form
   coffee-rails (~> 4.0.0)
   devise
   dotenv-rails
@@ -266,3 +270,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.3.0)
   will_paginate (~> 3.0.6)
+  will_paginate-bootstrap

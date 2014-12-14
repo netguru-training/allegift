@@ -1,42 +1,42 @@
 #{ provide(:title, 'Gifts') }
+=render 'top_nav'
 
 .container-fluid
-  
-  .row.center-block
-    .col-md-12
 
-    .btn-group.btn-group-justified
+  //=gravatar_for current_user
 
-      = link_to "Make a wish", new_gift_path, class: 'btn btn-info'
-      = link_to "My gifts to others", santa_list_gifts_path, class: 'btn btn-success'
+  %h4.text-center= render 'search_form'
+  %p.text-center= link_to "Show all", gifts_path
 
-    //=gravatar_for current_user
+  %h1.text-center= @title
+  %h4.text-center Gifts that other people want
 
-    %div{"ng-controller" => "SearchController"}
+  %div{"ng-controller" => "SearchController"}
 
-      %h4.text-center= render 'search_form'
-      %p.text-center= link_to "Show all", gifts_path
+    %h4.text-center= render 'search_form'
+    %p.text-center= link_to "Show all", gifts_path
 
-      %input{"type"=>"text", "placeholder"=>"Search", "name"=>"query", "ng-model"=>"query"}
-      %input{"type"=>"submit", "value"=>"Search", "ng-click"=>"searchClick"}
+    %input{"type"=>"text", "placeholder"=>"Search", "name"=>"query", "ng-model"=>"query"}
+    %input{"type"=>"submit", "value"=>"Search", "ng-click"=>"searchClick"}
 
-      %h1.text-center= @title
-      %h4.text-center Gifts that other people want
+    %h1.text-center= @title
+    %h4.text-center Gifts that other people want
 
-      = will_paginate @gifts
-      %table.table.table-hover.table.striped
+    = will_paginate @gifts, renderer: BootstrapPagination::Rails
+    %table.table.table-hover.table.striped.panel
+      %tr
+        %th Who made a wish
+        %th Gift name
+        %th Link
+        %th
+
+      -@gifts.each do |g|
         %tr
-          %th Who made a wish
-          %th Gift name
-          %th Link
-          %th
+          %td= g.user.name
+          %td= g.name
+          %td= link_to "See on Allegro", g.allegro_link
+          %td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
 
-          -@gifts.each do |g|
-            %tr
-              %td= g.user.name
-              %td= g.name
-              %td= link_to "See on Allegro", g.allegro_link
-              %td= link_to "Choose", gift_register_santa_path(g), method: :patch, class: 'btn btn-info'
+    = will_paginate @gifts, renderer: BootstrapPagination::Rails
 
-      = will_paginate @gifts
 

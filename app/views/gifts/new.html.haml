@@ -1,12 +1,19 @@
 #{ provide(:title, 'Add new gift') }
+=render 'top_nav'
 
-%h1 Add new gift
-= form_for @gift do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
-  .form-group
-    = f.label :allegro_link
-    = f.text_area :allegro_link, class: 'form-control'
-
-  = f.submit 'Save'
+.container.fluid
+  .row.new-wish.center-block
+    .col-md-8.col-md-offset-2.text-center
+      %h2 Add a new wish
+      = form_for @gift do |f|
+        .field
+          = f.label :name
+          %br/
+          = f.text_field :name, class: 'form-control'
+        .field
+          = f.label :allegro_link
+          %br/
+          = f.text_field :allegro_link, class: 'form-control'
+        %br
+        .actions
+          = f.submit 'Save', class: 'btn btn-info'
