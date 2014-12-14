@@ -30,3 +30,5 @@ config/initializers/secret_token.rb
 bower.json
 database.yml
 .env
+
+.idea/*

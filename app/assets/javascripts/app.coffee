@@ -1,2 +1,4 @@
-allegift = angular.module('allegift',[])
+workshops = angular.module('allegift',[
+
+])
 

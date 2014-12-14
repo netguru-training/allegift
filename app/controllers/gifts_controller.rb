@@ -1,4 +1,5 @@
 class GiftsController < ApplicationController
+  respond_to :html, :xml, :json
 
   before_action :authenticate_user!, only: [:new, :index, :create]
   before_action :prepare_gift, only: [:create]
@@ -28,12 +29,15 @@ class GiftsController < ApplicationController
       search_query = "%#{params[:search_query]}%"
       @gifts = Gift.has_not_santa.not_same_user(current_user.id)
                    .where("name like ? or allegro_link like ?", search_query, search_query)
-                   .paginate( :page => params[:page], per_page: 10)
-
+                   .includes(:importance, :user)
+                   #.paginate( :page => params[:page], per_page: 10)
     else
       @gifts = Gift.has_not_santa.not_same_user(current_user.id)
+                   .includes(:importance, :user)
+                   #.paginate(page: params[:page], per_page: 10)
     end
-    render json: @gifts
+    render :json => @gifts.to_json#(:include => { :user => { :only => :name }})
+    #render json: @gifts
   end
 
   def create
@@ -48,12 +52,11 @@ class GiftsController < ApplicationController
   end
 
   def register_santa
-
     chosen_gift = Gift.find(params[:gift_id])
     chosen_gift.santa_id = current_user.id
     chosen_gift.save
 
-    redirect_to gifts_path
+    render :json => chosen_gift.to_json
   end
 
   def santa_list

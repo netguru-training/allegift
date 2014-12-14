@@ -1,12 +1,12 @@
 !!!
 %html
-  %head{ lang: 'en', "ng-app"=>'allegift'}
+  %head{ lang: 'en'}
     %title #{ full_title(yield(:title)) + "AlleGift" }
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = favicon_link_tag "snowflake.ico"
-  %body
+  %body{"ng-app"=>'allegift'}
   = render "layouts/header"
   = render "layouts/flash"
   = yield
