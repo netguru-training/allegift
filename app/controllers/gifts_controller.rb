@@ -36,7 +36,7 @@ class GiftsController < ApplicationController
                    .includes(:importance, :user)
                    #.paginate(page: params[:page], per_page: 10)
     end
-    render :json => @gifts.to_json#(:include => { :user => { :only => :name }})
+    render :json => @gifts.to_json(include: { user:{ only: :name }, importance:{ only: :name } } )
     #render json: @gifts
   end
 

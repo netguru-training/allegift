@@ -7,6 +7,19 @@ angular.module('allegift').controller "searchController", [
     $scope.page = 1
     $scope.prevClass = "disabled";
 
+    $scope.getAll = ->
+      $http.get('/gifts/live_search')
+      .success (data) ->
+        $scope.AllGifts = data
+        $scope.updatePages()
+        console.log data
+        return
+      .error (data) ->
+        console.log('Error: ' + data)
+        return
+
+    $scope.getAll()
+
     $scope.willPaginateCollection = {
       currentPage : 1,
       perPage : 10,
@@ -29,15 +42,7 @@ angular.module('allegift').controller "searchController", [
       console.log $scope.start, $scope.end
       $scope.gifts = $scope.AllGifts.slice($scope.start,$scope.end );
 
-    $http.get('/gifts/live_search')
-    .success (data) ->
-      $scope.AllGifts = data
-      $scope.updatePages()
-      console.log data
-      return
-    .error (data) ->
-      console.log('Error: ' + data)
-      return
+
 
     $scope.searchClick = ->
       console.log $scope.query

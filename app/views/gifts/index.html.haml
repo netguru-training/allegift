@@ -7,14 +7,13 @@
 
   %div{"ng-controller" => "searchController"}
 
-    %h4.text-center= render 'search_form'
-    %p.text-center= link_to "Show all", gifts_path
-
-    %input{"type"=>"text", "placeholder"=>"Search", "name"=>"query", "ng-model"=>"query", "ng-change"=>"searchClick()"}
-    //%input{"type"=>"submit", "value"=>"Search", }
-
-    %h1.text-center= @title
     %h4.text-center Gifts that other people want
+
+    %form.text-center
+      %input{"type"=>"text", "placeholder"=>"Search for gifts", "name"=>"query", "ng-model"=>"query", "ng-change"=>"searchClick()"}
+
+      %p
+        %a{"href"=>"", "ng-click"=>"getAll()"} Show all
 
     //= will_paginate @gifts, renderer: BootstrapPagination::Rails
 
@@ -41,7 +40,7 @@
         //%td= link_to "See on Allegro", g.allegro_link
         %td{"ng-bind"=>"gift.user.name"}
         %td{"ng-bind"=>"gift.name"}
-        %td{"ng-bind"=>"gift.name"}
+        %td{"ng-bind"=>"gift.importance.name"}
           %a{"ng-href"=>"{{gift.allegro_link}}"}
         %td
           %a.btn.btn-info{"ng-click"=>"registerSanta(gift.id)"} Choose
